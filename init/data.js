@@ -1,3 +1,7 @@
+require('dotenv').config(); 
+
+console.log("Atlas URL:", process.env.ATLASDB_URL);
+
 const sampleListings = [
   {
     title: "Cozy Beachfront Cottage",

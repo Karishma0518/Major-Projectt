@@ -27,6 +27,11 @@ module.exports.listingSchema = Joi.object({
         country: Joi.string().required(),
         price: Joi.number().required().min(0),
         // Allow image to be an object with optional empty url/filename
+         geometry: Joi.object({
+      type: Joi.string().valid("Point").required(),
+      coordinates: Joi.array().items(Joi.number()).length(2).required()
+    }).required(),
+
         image: Joi.object({
             url: Joi.string().uri().allow("", null),
             filename: Joi.string().allow("", null)
