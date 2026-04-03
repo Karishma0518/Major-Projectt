@@ -105,8 +105,21 @@ app.all(/.*/, (req, res, next) => {
   next(new ExpressError(404,"Page Not Found!"));
 });
 
+
+// app.use((err, req, res, next) => {
+//   let {statusCode = 500, message = "Something went wrong!"} = err;
+//    console.log(err.stack);
+//    res.status(statusCode).render("error.ejs", {message});
+//   // res.status(statusCode).send(message);
+// });
+
+app.use((req, res, next) => {
+  next(new ExpressError(404,"Page Not Found!"));
+});
+
 app.use((err, req, res, next) => {
   let {statusCode = 500, message = "Something went wrong!"} = err;
+   console.log(err.stack);
    res.status(statusCode).render("error.ejs", {message});
   // res.status(statusCode).send(message);
 });
