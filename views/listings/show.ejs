@@ -134,5 +134,24 @@
       </div>
   </div>
 
-  <script src="/js/map.js"></script>
+  <style>
+#map {
+  height: 400px;
+}
+</style>
 
+  <!-- <script src="/js/map.js"></script> -->
+<script>
+  mapboxgl.accessToken = mapToken;
+
+  const map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/mapbox/streets-v12",
+    center: listing.geometry.coordinates,
+    zoom: 9,
+  });
+
+  new mapboxgl.Marker()
+    .setLngLat(listing.geometry.coordinates)
+    .addTo(map);
+</script>
